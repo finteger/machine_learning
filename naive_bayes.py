@@ -28,10 +28,23 @@ X_train, X_test, y_train, y_test = train_test_split(X, labels, test_size=0.3, ra
 classifier = MultinomialNB()
 classifier.fit(X_train, y_train)
 
-#make predictions
-y_pred = classifier.predict(X_test)
+
+new_emails = [
+    "Free trip Jamaica",
+    "Win a lottery",
+    "Your friend called money",
+    "AI take jobs",
+    "AI not jobs"
+]
+
+X_new = vectorizer.fit_transform(new_emails)
+
+
+predictions = classifier.predict(X_new)
+
+print("Predictions:", predictions)
 
 #calculate accuracy
-accuracy = accuracy_score(y_test, y_pred)
+#accuracy = accuracy_score(y_test, y_pred)
 
-print(f'Accuracy: {accuracy * 100:.2f}')
+#print(f'Accuracy: {accuracy * 100:.2f}%')
